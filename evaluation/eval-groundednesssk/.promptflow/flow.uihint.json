@@ -1,0 +1,19 @@
+{
+  "nodes": {
+    "semantic_kernel": {
+      "variant_0": {
+        "inputs": {
+          "question": [],
+          "context": []
+        }
+      }
+    },
+    "gpt_groundedness": {
+      "variant_0": {
+        "inputs": {
+          "answer": []
+        }
+      }
+    }
+  }
+}
