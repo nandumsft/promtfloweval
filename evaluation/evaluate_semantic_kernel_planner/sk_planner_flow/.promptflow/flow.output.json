@@ -1,0 +1,16 @@
+{
+  "answer": "1100",
+  "steps": [
+    [
+      "Adds value to a value",
+      "Function:",
+      "math.Add",
+      ":",
+      {
+        "variables": {
+          "input": ""
+        }
+      }
+    ]
+  ]
+}

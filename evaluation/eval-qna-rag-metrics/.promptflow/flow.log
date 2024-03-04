@@ -1,157 +1,26 @@
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Start executing nodes in thread pool mode.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Start to run 9 nodes with concurrency level 16.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Executing node select_metrics. node run id: 80eab1e2-0803-4d9e-834f-c69bab2e54a8_select_metrics_0
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Node select_metrics completes.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Executing node validate_input. node run id: 80eab1e2-0803-4d9e-834f-c69bab2e54a8_validate_input_0
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Node validate_input completes.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     The node 'gpt_groundedness' will be executed because the activate condition is met, i.e. '${validate_input.output.gpt_groundedness}' is equal to 'True'.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     The node 'gpt_retrieval_score' will be executed because the activate condition is met, i.e. '${validate_input.output.gpt_retrieval_score}' is equal to 'True'.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     The node 'gpt_relevance' will be executed because the activate condition is met, i.e. '${validate_input.output.gpt_relevance}' is equal to 'True'.
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Executing node gpt_groundedness. node run id: 80eab1e2-0803-4d9e-834f-c69bab2e54a8_gpt_groundedness_0
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Executing node gpt_retrieval_score. node run id: 80eab1e2-0803-4d9e-834f-c69bab2e54a8_gpt_retrieval_score_0
-2024-02-27 20:24:35 -0800   37180 execution.flow     INFO     Executing node gpt_relevance. node run id: 80eab1e2-0803-4d9e-834f-c69bab2e54a8_gpt_relevance_0
-2024-02-27 20:24:36 -0800   37180 execution          WARNING  [gpt_relevance in line 0 (index starts from 0)] stderr> Exception occurs: NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}}
-2024-02-27 20:24:36 -0800   37180 execution          ERROR    Node gpt_relevance in line 0 failed. Exception: OpenAI API hits NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}} [Error reference: https://platform.openai.com/docs/guides/error-codes/api-errors].
-Traceback (most recent call last):
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\common.py", line 196, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\aoai.py", line 153, in chat
-    completion = self._client.chat.completions.create(**params)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\openai_injector.py", line 88, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
-    output = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_utils\_utils.py", line 275, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\resources\chat\completions.py", line 663, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 1200, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 889, in request
-    return self._request(
-           ^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 980, in _request
-    raise self._make_status_error_from_response(err.response) from None
-openai.NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}}
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 88, in invoke_tool
-    result = self._invoke_tool_with_timer(node, f, kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 196, in _invoke_tool_with_timer
-    raise e
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 190, in _invoke_tool_with_timer
-    return f(**kwargs)
-           ^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
-    output = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\common.py", line 211, in wrapper
-    raise WrappedOpenAIError(e)
-promptflow.tools.exception.WrappedOpenAIError: OpenAI API hits NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}} [Error reference: https://platform.openai.com/docs/guides/error-codes/api-errors]
-2024-02-27 20:24:36 -0800   37180 execution          WARNING  [gpt_retrieval_score in line 0 (index starts from 0)] stderr> Exception occurs: NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}}
-2024-02-27 20:24:36 -0800   37180 execution          ERROR    Node gpt_retrieval_score in line 0 failed. Exception: OpenAI API hits NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}} [Error reference: https://platform.openai.com/docs/guides/error-codes/api-errors].
-Traceback (most recent call last):
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\common.py", line 196, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\aoai.py", line 153, in chat
-    completion = self._client.chat.completions.create(**params)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\openai_injector.py", line 88, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
-    output = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_utils\_utils.py", line 275, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\resources\chat\completions.py", line 663, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 1200, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 889, in request
-    return self._request(
-           ^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 980, in _request
-    raise self._make_status_error_from_response(err.response) from None
-openai.NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}}
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 88, in invoke_tool
-    result = self._invoke_tool_with_timer(node, f, kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 196, in _invoke_tool_with_timer
-    raise e
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 190, in _invoke_tool_with_timer
-    return f(**kwargs)
-           ^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
-    output = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\common.py", line 211, in wrapper
-    raise WrappedOpenAIError(e)
-promptflow.tools.exception.WrappedOpenAIError: OpenAI API hits NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}} [Error reference: https://platform.openai.com/docs/guides/error-codes/api-errors]
-2024-02-27 20:24:36 -0800   37180 execution.flow     ERROR    Flow execution has failed. Cancelling all running nodes: gpt_groundedness,gpt_retrieval_score,gpt_relevance.
-2024-02-27 20:24:36 -0800   37180 execution          WARNING  [gpt_groundedness in line 0 (index starts from 0)] stderr> Exception occurs: NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}}
-2024-02-27 20:24:36 -0800   37180 execution          ERROR    Node gpt_groundedness in line 0 failed. Exception: OpenAI API hits NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}} [Error reference: https://platform.openai.com/docs/guides/error-codes/api-errors].
-Traceback (most recent call last):
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\common.py", line 196, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\aoai.py", line 153, in chat
-    completion = self._client.chat.completions.create(**params)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\openai_injector.py", line 88, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
-    output = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_utils\_utils.py", line 275, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\resources\chat\completions.py", line 663, in create
-    return self._post(
-           ^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 1200, in post
-    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 889, in request
-    return self._request(
-           ^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\openai\_base_client.py", line 980, in _request
-    raise self._make_status_error_from_response(err.response) from None
-openai.NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}}
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 88, in invoke_tool
-    result = self._invoke_tool_with_timer(node, f, kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 196, in _invoke_tool_with_timer
-    raise e
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 190, in _invoke_tool_with_timer
-    return f(**kwargs)
-           ^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
-    output = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\tools\common.py", line 211, in wrapper
-    raise WrappedOpenAIError(e)
-promptflow.tools.exception.WrappedOpenAIError: OpenAI API hits NotFoundError: Error code: 404 - {'error': {'code': 'DeploymentNotFound', 'message': 'The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again.'}} [Error reference: https://platform.openai.com/docs/guides/error-codes/api-errors]
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Start executing nodes in thread pool mode.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Start to run 9 nodes with concurrency level 16.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Executing node select_metrics. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_select_metrics_0
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Node select_metrics completes.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Executing node validate_input. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_validate_input_0
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Node validate_input completes.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     The node 'gpt_groundedness' will be executed because the activate condition is met, i.e. '${validate_input.output.gpt_groundedness}' is equal to 'True'.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     The node 'gpt_retrieval_score' will be executed because the activate condition is met, i.e. '${validate_input.output.gpt_retrieval_score}' is equal to 'True'.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     The node 'gpt_relevance' will be executed because the activate condition is met, i.e. '${validate_input.output.gpt_relevance}' is equal to 'True'.
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Executing node gpt_groundedness. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_gpt_groundedness_0
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Executing node gpt_retrieval_score. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_gpt_retrieval_score_0
+2024-03-02 21:43:08 -0800   31536 execution.flow     INFO     Executing node gpt_relevance. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_gpt_relevance_0
+2024-03-02 21:43:15 -0800   31536 execution.flow     INFO     Node gpt_groundedness completes.
+2024-03-02 21:43:15 -0800   31536 execution.flow     INFO     Executing node parse_grounding_score. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_parse_grounding_score_0
+2024-03-02 21:43:15 -0800   31536 execution.flow     INFO     Node parse_grounding_score completes.
+2024-03-02 21:43:23 -0800   31536 execution.flow     INFO     Node gpt_relevance completes.
+2024-03-02 21:43:23 -0800   31536 execution.flow     INFO     Executing node parse_generation_score. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_parse_generation_score_0
+2024-03-02 21:43:23 -0800   31536 execution.flow     INFO     Node parse_generation_score completes.
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Node gpt_retrieval_score completes.
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Executing node parse_retrieval_score. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_parse_retrieval_score_0
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Node parse_retrieval_score completes.
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Executing node concat_scores. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_concat_scores_0
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Node concat_scores completes.
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Start to run 1 nodes with concurrency level 16.
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Executing node aggregate_variants_results. node run id: 5f894af2-aae4-44fc-9aa0-a1f849a1b93a_aggregate_variants_results_reduce
+2024-03-02 21:44:02 -0800   31536 execution.flow     INFO     Node aggregate_variants_results completes.

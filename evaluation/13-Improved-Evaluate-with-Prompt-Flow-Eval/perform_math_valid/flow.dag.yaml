@@ -1,0 +1,40 @@
+id: template_standard_flow
+name: Template Standard Flow
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  text:
+    type: string
+    default: What is 10 + 20
+  groundtruth:
+    type: string
+    default: "25"
+outputs:
+  result:
+    type: string
+    reference: ${aggregate.output}
+nodes:
+- name: math_planner
+  type: python
+  source:
+    type: code
+    path: math_planner.py
+  inputs:
+    AzureOpenAIConnection: aoaicanadaeast
+    input: ${inputs.text}
+- name: line_process
+  type: python
+  source:
+    type: code
+    path: line_process.py
+  inputs:
+    groundtruth: ${inputs.groundtruth}
+    prediction: ${math_planner.output}
+- name: aggregate
+  type: python
+  source:
+    type: code
+    path: aggregate.py
+  inputs:
+    processed_results: ${line_process.output}
+  aggregation: true

@@ -1,4 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
 inputs:
   question:
     type: string
@@ -50,20 +52,16 @@ nodes:
     type: code
     path: gpt_coherence_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt4
     temperature: 0
     top_p: 1
-    stop: ""
     max_tokens: 1
     presence_penalty: 0
     frequency_penalty: 0
-    logit_bias: ""
     question: ${inputs.question}
     answer: ${inputs.answer}
-  provider: AzureOpenAI
-  connection: open_ai_connection
+  connection: aoaicanadaeast
   api: chat
-  module: promptflow.tools.aoai
   activate:
     when: ${validate_input.output.gpt_coherence}
     is: true
@@ -88,21 +86,17 @@ nodes:
     type: code
     path: gpt_similarity_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt4
     temperature: 0
     top_p: 1
-    stop: ""
     max_tokens: 1
     presence_penalty: 0
     frequency_penalty: 0
-    logit_bias: ""
     answer: ${inputs.answer}
     ground_truth: ${inputs.ground_truth}
     question: ${inputs.question}
-  provider: AzureOpenAI
-  connection: open_ai_connection
+  connection: aoaicanadaeast
   api: chat
-  module: promptflow.tools.aoai
   activate:
     when: ${validate_input.output.gpt_similarity}
     is: true
@@ -113,21 +107,17 @@ nodes:
     type: code
     path: gpt_relevance_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt4
     temperature: 0
     top_p: 1
-    stop: ""
     max_tokens: 1
     presence_penalty: 0
     frequency_penalty: 0
-    logit_bias: ""
     answer: ${inputs.answer}
     context: ${inputs.context}
     question: ${inputs.question}
-  provider: AzureOpenAI
-  connection: open_ai_connection
+  connection: aoaicanadaeast
   api: chat
-  module: promptflow.tools.aoai
   activate:
     when: ${validate_input.output.gpt_relevance}
     is: true
@@ -138,20 +128,16 @@ nodes:
     type: code
     path: gpt_fluency_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt4
     temperature: 0
     top_p: 1
-    stop: ""
     max_tokens: 1
     presence_penalty: 0
     frequency_penalty: 0
-    logit_bias: ""
     answer: ${inputs.answer}
     question: ${inputs.question}
-  provider: AzureOpenAI
-  connection: open_ai_connection
+  connection: aoaicanadaeast
   api: chat
-  module: promptflow.tools.aoai
   activate:
     when: ${validate_input.output.gpt_fluency}
     is: true
@@ -174,20 +160,16 @@ nodes:
     type: code
     path: gpt_groundedness_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt4
     temperature: 0
     top_p: 1
-    stop: ""
     max_tokens: 1
     presence_penalty: 0
     frequency_penalty: 0
-    logit_bias: ""
     answer: ${inputs.answer}
     context: ${inputs.context}
-  provider: AzureOpenAI
-  connection: open_ai_connection
+  connection: aoaicanadaeast
   api: chat
-  module: promptflow.tools.aoai
   activate:
     when: ${validate_input.output.gpt_groundedness}
     is: true
@@ -216,8 +198,8 @@ nodes:
     type: package
     tool: promptflow.tools.embedding.embedding
   inputs:
-    connection: open_ai_connection
-    deployment_name: text-embedding-ada-002
+    connection: aoaicanadaeast
+    deployment_name: embedding
     input: ${inputs.ground_truth}
   activate:
     when: ${validate_input.output.ada_similarity}
@@ -229,8 +211,8 @@ nodes:
     type: package
     tool: promptflow.tools.embedding.embedding
   inputs:
-    connection: open_ai_connection
-    deployment_name: text-embedding-ada-002
+    connection: aoaicanadaeast
+    deployment_name: embedding
     input: ${inputs.answer}
   activate:
     when: ${validate_input.output.ada_similarity}
@@ -260,6 +242,3 @@ nodes:
     question: ${inputs.question}
     selected_metrics: ${select_metrics.output}
   use_variants: false
-node_variants: {}
-environment:
-  python_requirements_txt: requirements.txt

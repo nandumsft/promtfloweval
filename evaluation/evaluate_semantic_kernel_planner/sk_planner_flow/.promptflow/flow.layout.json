@@ -1,0 +1,25 @@
+{
+  "nodeLayouts": {
+    "inputs": {
+      "x": 290,
+      "y": 42,
+      "index": -1
+    },
+    "outputs": {
+      "x": 220,
+      "y": 310,
+      "index": -1
+    },
+    "planner": {
+      "x": 140,
+      "y": 176,
+      "index": 0
+    },
+    "Semantic_Kernel_Stepwise_Planner_u8ik": {
+      "x": 92.55560302734375,
+      "y": 306.3055725097656,
+      "index": -1
+    }
+  },
+  "orientation": "Vertical"
+}

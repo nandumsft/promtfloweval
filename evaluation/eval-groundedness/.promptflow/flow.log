@@ -1,0 +1,9 @@
+2024-03-02 21:32:03 -0800   27240 execution.flow     INFO     Start executing nodes in thread pool mode.
+2024-03-02 21:32:03 -0800   27240 execution.flow     INFO     Start to run 2 nodes with concurrency level 16.
+2024-03-02 21:32:03 -0800   27240 execution.flow     INFO     Executing node gpt_groundedness. node run id: 87492dc7-7c4e-4d78-9a53-cd263bdee1c2_gpt_groundedness_0
+2024-03-02 21:32:05 -0800   27240 execution.flow     INFO     Node gpt_groundedness completes.
+2024-03-02 21:32:05 -0800   27240 execution.flow     INFO     Executing node parse_score. node run id: 87492dc7-7c4e-4d78-9a53-cd263bdee1c2_parse_score_0
+2024-03-02 21:32:05 -0800   27240 execution.flow     INFO     Node parse_score completes.
+2024-03-02 21:32:05 -0800   27240 execution.flow     INFO     Start to run 1 nodes with concurrency level 16.
+2024-03-02 21:32:05 -0800   27240 execution.flow     INFO     Executing node aggregate. node run id: 87492dc7-7c4e-4d78-9a53-cd263bdee1c2_aggregate_reduce
+2024-03-02 21:32:05 -0800   27240 execution.flow     INFO     Node aggregate completes.

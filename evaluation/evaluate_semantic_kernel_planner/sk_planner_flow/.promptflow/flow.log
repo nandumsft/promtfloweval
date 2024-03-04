@@ -1,0 +1,29 @@
+2024-02-29 12:42:25 -0800   25196 execution.flow     INFO     Start executing nodes in thread pool mode.
+2024-02-29 12:42:25 -0800   25196 execution.flow     INFO     Start to run 1 nodes with concurrency level 16.
+2024-02-29 12:42:25 -0800   25196 execution.flow     INFO     Executing node planner. node run id: 93b8bbcb-d187-4a74-b27b-d45010c13142_planner_0
+2024-02-29 12:42:25 -0800   25196 execution          ERROR    Node planner in line 0 failed. Exception: Execution failure in 'planner': (AssertionError) Azure OpenAI deployment name not found in .env file.
+Traceback (most recent call last):
+  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 190, in _invoke_tool_with_timer
+    return f(**kwargs)
+           ^^^^^^^^^^^
+  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\tracer.py", line 404, in wrapped
+    output = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ankommar\OneDrive - Microsoft\Work\CSA\promtfloweval\evaluation\evaluate_semantic_kernel_planner\sk_planner_flow\planner.py", line 25, in my_python_tool
+    deployment, api_key, endpoint = sk.azure_openai_settings_from_dot_env()
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\semantic_kernel\utils\settings.py", line 51, in azure_openai_settings_from_dot_env
+    assert deployment is not None, "Azure OpenAI deployment name not found in .env file"
+           ^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Azure OpenAI deployment name not found in .env file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 88, in invoke_tool
+    result = self._invoke_tool_with_timer(node, f, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ankommar\AppData\Local\anaconda3\Lib\site-packages\promptflow\_core\flow_execution_context.py", line 201, in _invoke_tool_with_timer
+    raise ToolExecutionError(node_name=node_name, module=module) from e
+promptflow._core._errors.ToolExecutionError: Execution failure in 'planner': (AssertionError) Azure OpenAI deployment name not found in .env file
+2024-02-29 12:42:25 -0800   25196 execution.flow     ERROR    Flow execution has failed. Cancelling all running nodes: planner.
